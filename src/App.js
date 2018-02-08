@@ -21,7 +21,7 @@ class App extends Component {
 
   componentWillMount() {
     const { firestore } = this.context.store;
-    firestore.get('users');
+    //firestore.get('users');
     firestore.onSnapshot( { collection: 'users'}, snapshot => console.log(snapshot) );
   }
 
@@ -33,7 +33,7 @@ class App extends Component {
   }
 
   render() {
-    const { users, saveUser } = this.props;
+    const { users } = this.props;
     return (
       <div className="App">
         <header className="App-header">
@@ -60,12 +60,4 @@ function mapStateToProps(state) {
   };
 };
 
-function mapDispatchToProps(dispatch) {
-  return {
-    saveUser: (firstName, lastName) => {
-
-    }
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps)(App);
